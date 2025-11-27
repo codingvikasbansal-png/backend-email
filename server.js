@@ -2,16 +2,29 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+
+// Rate limiting: 2 requests per hour per IP
+const contactRateLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour in milliseconds
+  max: 2, // Limit each IP to 2 requests per windowMs
+  message: {
+    ok: false,
+    error: 'Too many requests from this IP, please try again after an hour.'
+  },
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// POST route /contact
-app.post('/contact', async (req, res) => {
+// POST route /contact (with rate limiting)
+app.post('/contact', contactRateLimiter, async (req, res) => {
   try {
     const { name, email, company, title, message } = req.body;
 
