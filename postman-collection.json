@@ -1,0 +1,49 @@
+{
+  "info": {
+    "name": "Contact Form API",
+    "description": "API collection for contact form endpoint",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST /contact",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"company\": \"Acme Inc\",\n  \"title\": \"Test Contact\",\n  \"message\": \"This is a test message from the contact form.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/contact",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["contact"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["health"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
+

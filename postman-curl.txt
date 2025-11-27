@@ -1,0 +1,10 @@
+curl -X POST http://localhost:4000/contact \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "company": "Acme Inc",
+    "title": "Test Contact",
+    "message": "This is a test message from the contact form."
+  }'
+
