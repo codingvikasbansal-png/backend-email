@@ -22,7 +22,11 @@ echo "Expected response: {\"ok\":true}"
 #   -d '{
 #     "name": "John Doe",
 #     "email": "john.doe@example.com",
+#     "company": "Acme Inc",
 #     "title": "Test Contact",
 #     "message": "This is a test message from the contact form."
 #   }'
+
+# Health check endpoint:
+# curl https://YOUR_VERCEL_URL.vercel.app/health
 
