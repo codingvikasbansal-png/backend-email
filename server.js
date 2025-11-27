@@ -13,7 +13,7 @@ const contactRateLimiter = rateLimit({
   max: 2, // Limit each IP to 2 requests per windowMs
   message: {
     ok: false,
-    error: 'Too many requests from this IP, please try again after an hour.'
+    error: 'Too many requests from this IP, please try again later.'
   },
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
